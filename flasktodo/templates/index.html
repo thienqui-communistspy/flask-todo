@@ -8,8 +8,10 @@
       <li class="{{ "completed" if todo['completed'] }}">
         {{ todo['description'] }}
       </li>
-      <textarea name="todo" id="todo">{{ request.form['todo'] }}</textarea>
-      <input type="submit" value="Save">
     {% endfor %}
   </ul>
+  <form method="post">
+  <textarea name="todo" id="todo">{{ request.form['todo'] }}</textarea>
+  <input type="submit" value="Save">
+  </form>
 {% endblock %}
