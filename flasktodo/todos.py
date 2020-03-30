@@ -15,4 +15,3 @@ def index():
     cur.close()
 
     return render_template("index.html", todos=todos)
-
