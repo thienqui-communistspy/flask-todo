@@ -14,7 +14,9 @@
       "size": "free"
     }
   },
-  "scripts": {
-    "postdeploy": "sh bin/create-db.sh"
+  "env": {
+    "FLASK_APP": {
+      "value": "flasktodo"
+    }
   }
 }
