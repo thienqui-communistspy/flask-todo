@@ -14,5 +14,9 @@ def index():
     todos = cur.fetchall()
     cur.close()
 
-    return render_template("index.html", todos=todos)
+def crossoff():
+    #need an if statement to begin with
+    cur = db.get_db().cursor()
+    cur.execute('')
 
+    return render_template("index.html", todos=todos)

@@ -5,9 +5,9 @@
 
   <ul>
     {% for todo in todos %}
-      <li class="{{ "completed" if todo['completed'] }}">
+      <a href="#"><li class="{{ "completed" if todo['completed'] }}">
         {{ todo['description'] }}
-      </li>
+      </li></a>
     {% endfor %}
   </ul>
 {% endblock %}
