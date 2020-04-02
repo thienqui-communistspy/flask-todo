@@ -53,6 +53,25 @@ def index():
                 todos = cur.fetchall()
                 cur.close()
                 return render_template("index.html", todos=todos)
+<<<<<<< HEAD
+=======
+
+        elif "edit" in request.form:
+            id = request.form['fix']
+            description = request.form['edit']
+            with db.get_db() as con:
+                with con.cursor() as cur:
+                    cur.execute(
+                        'UPDATE todos SET description = %s WHERE id = %s',
+                        (id, description,)
+                    )
+                cur = db.get_db().cursor()
+                cur.execute('SELECT * FROM todos')
+                todos = cur.fetchall()
+                cur.close()
+                return render_template("index.html", todos=todos)
+
+>>>>>>> 54e58c7c628c2a31a454e98e698b781678a65c1c
         todo = request.form['todo']
         with db.get_db() as con:
             with con.cursor() as cur:

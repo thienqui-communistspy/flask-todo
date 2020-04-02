@@ -16,6 +16,11 @@
       <li class="{{ "completed" if todo['completed'] }}">
         <form method="POST" ><button type="submit" name="delete" value="{{todo['id']}}">Delete</button> </form>
         <form method="POST"><button type="submit" name="finished" value="{{todo['id']}}">Completed</button></form>
+
+        <form method="POST">
+        <button type="submit" name="edit" value="{{todo['id']}}">Edit</button>
+        <textarea name="fix" id="fix">{{ request.form['fix'] }}</textarea>
+        </form>
         {{ todo['description'] }}
       </li>
     {% endfor %}
