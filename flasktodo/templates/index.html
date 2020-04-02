@@ -4,6 +4,14 @@
   <h1>A simple to-do application</h1>
 
   <ul>
+    {% if g.user %}
+      <li><span>{{ g.user['username'] }}</span></li>
+      <li><a href="{{ url_for('todos.logout') }}">Log-Out</a></li>
+    {% else %}
+      <li><a href="{{ url_for('todos.register') }}">Register</a></li>
+      <li><a href="{{ url_for('todos.login') }}">Log-In</a></li>
+    {% endif %}
+    {% if g.user %}
     {% for todo in todos %}
       <li class="{{ "completed" if todo['completed'] }}">
         <form method="POST" ><button type="submit" name="delete" value="{{todo['id']}}">Delete</button> </form>
@@ -26,6 +34,11 @@
         {{ update['description'] }}
       </li>
     {% endfor %}
+    {% for private in privates %}
+    <li class="{{ "completed" if private['completed'] }}">
+      {{ private['description'] }}
+    </li>
+    {% endfor %}
   </ul>
   <form method="post">
   <textarea name="todo" id="todo">{{ request.form['todo'] }}</textarea>
@@ -33,5 +46,6 @@
   <input type="submit" name="completed" value="completed">
   <input type="submit" name="uncompleted" value="not-done">
   <input type="submit" name="submit_button" value="all">
+  {% endif %}
   </form>
 {% endblock %}

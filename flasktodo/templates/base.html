@@ -10,6 +10,15 @@
   </head>
   <body>
     {% block content %}
+    <ul>
+      {% if g.users %}
+      <li><span>{{g.users['username']}}</span></li>
+      <li><a href="{{ url_for('todos.login') }}">Log-Out</a></li>
+      {% else %}
+      <li><a href="{{ url_for('todos.register') }}">Register</a></li>
+      <li><a href="{{ url_for('todos.login') }}">Log-in</a></li>
+      {% endif %}
+    </ul>
     {% endblock %}
   </body>
 </html>
